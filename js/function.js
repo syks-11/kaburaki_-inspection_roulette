@@ -1,6 +1,10 @@
 $(document).ready(function() {
     var wheel = $('.wheel');
     var lineWrapper = $('.lineWrapper');
+
+    var ctx = $('#myPieChart');
+    var myPieChart;
+
     var time = 10000;
     var prefecture = $('.mapSet01 .svg');
 
@@ -61,6 +65,8 @@ $(document).ready(function() {
 
         //ルーレットの項目の背景の幅を指定
         $('.item .bg').css('width',itemWidth);
+
+        $('#myPieChart').css('transform','rotate('+ (-360 / (valuesNum*2)) +'deg)');
     }
 
 
@@ -107,6 +113,11 @@ $(document).ready(function() {
             'transform': 'rotate(' + (rotation + ((360 / valuesNum)/2)) + 'deg)'
         });
 
+        $('#myPieChart').css({
+            'transition': 'transform ' + time + 'ms',
+            'transform': 'rotate(' + (rotation - (360 / (valuesNum*2))) + 'deg)'
+        });
+
         // ボタンを押したtime秒後の処理
         setTimeout(function(){
             // トランジションを0に
@@ -114,6 +125,9 @@ $(document).ready(function() {
                 'transition': 'transform 0s',
             });
             lineWrapper.css({
+                'transition': 'transform 0s',
+            });
+            $('#myPieChart').css({
                 'transition': 'transform 0s',
             });
             // 行き先の都道府県にターゲットのclassを付与
@@ -171,6 +185,9 @@ $(document).ready(function() {
         lineWrapper.css({
             'transform': 'rotate('+ ((360 / valuesNum) - ((360 / valuesNum)/2))  +'deg)'
         });
+        ctx.css({
+            'transform': 'rotate('+ (-360 / (valuesNum*2)) +'deg)'
+        });
         // SPINボタンを有効化
         $('#spin').removeClass('is-disabled');
         // $('#destination').html('');
@@ -197,15 +214,100 @@ $(document).ready(function() {
         },2000);
     }
 
+
+    function chartFunc() {
+        var hokkaidoCount = $('.rouletteSet01 .container .item[data-index="1"]').length;
+        var tohokuCount = $('.rouletteSet01 .container .item[data-index]').filter(function() {
+            var index = parseInt($(this).attr('data-index'), 10);
+            return index >= 2 && index <= 7;
+        }).length;
+        var kantoCount = $('.rouletteSet01 .container .item[data-index]').filter(function() {
+            var index = parseInt($(this).attr('data-index'), 10);
+            return index >= 8 && index <= 14;
+        }).length;
+        var chubuCount = $('.rouletteSet01 .container .item[data-index]').filter(function() {
+            var index = parseInt($(this).attr('data-index'), 10);
+            return index >= 15 && index <= 23;
+        }).length;
+        var kinkiCount = $('.rouletteSet01 .container .item[data-index]').filter(function() {
+            var index = parseInt($(this).attr('data-index'), 10);
+            return index >= 24 && index <= 30;
+        }).length;
+        var chugokuCount = $('.rouletteSet01 .container .item[data-index]').filter(function() {
+            var index = parseInt($(this).attr('data-index'), 10);
+            return index >= 31 && index <= 35;
+        }).length;
+        var shikokuCount = $('.rouletteSet01 .container .item[data-index]').filter(function() {
+            var index = parseInt($(this).attr('data-index'), 10);
+            return index >= 36 && index <= 39;
+        }).length;
+        var kyushuCount = $('.rouletteSet01 .container .item[data-index]').filter(function() {
+            var index = parseInt($(this).attr('data-index'), 10);
+            return index >= 40 && index <= 46;
+        }).length;
+        var okinawaCount = $('.rouletteSet01 .container .item[data-index="47"]').length;
+
+        if (myPieChart) {
+            myPieChart.destroy();
+        }
+
+
+        myPieChart = new Chart(ctx, {
+            type: 'pie', // グラフの種類
+            data: {
+                labels: ['北海道', '東北', '関東', '中部', '近畿', '中国', '四国', '九州', '沖縄'], // データ項目のラベル
+                datasets: [{
+                    label: '# of Votes',
+                    data: [hokkaidoCount, tohokuCount, kantoCount, chubuCount, kinkiCount, chugokuCount, shikokuCount, kyushuCount, okinawaCount], // 各項目のデータ
+                    backgroundColor: [ // 各データの背景色
+                        '#1D9DF2',
+                        '#61E59A',
+                        '#F23530',
+                        '#67D12A',
+                        '#FFD833',
+                        '#C0ABEF',
+                        '#5AE0E0',
+                        '#F76C1E',
+                        '#EA65BA'
+                    ],
+                    borderColor: '#000000',
+                    borderWidth: 0.5 // 境界線の太さ
+                }]
+            },
+            options: {
+                responsive: true, // レスポンシブ対応
+                animation: false,
+                plugins: {
+                    legend: {
+                        display: false // 凡例を非表示に設定
+                    },
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    }
+
+
+
+
     inputDestination();
     resetFunc();
     wheelSet();
+    chartFunc();
 
 
     // 都道府県のチェックボックスを押した際の処理
     $('input[name="destination"]').on('input', function() {
         inputDestination();
         wheelSet();
+        chartFunc();
+        myPieChart.update();
     });
 
     // スピンボタンのクリックイベント

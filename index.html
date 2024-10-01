@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="js/function.js"></script>
 </head>
 <body>
@@ -218,13 +219,13 @@
                     <p id="result"></p>
                 </div>
             </div>
-
         </div>
 
 
         <div class="rouletteSet01">
             <div class="wrapper">
                 <div class="container">
+                    <canvas id="myPieChart"></canvas>
                     <div id="roulette">
                         <div class="wheel"></div>
                         <div class="lineWrapper"></div>
@@ -237,7 +238,6 @@
                                     <p class="rouletteBtn is-spin" id="spin"><span>SPIN</span></p>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>

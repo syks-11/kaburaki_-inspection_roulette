@@ -263,7 +263,6 @@ body {
   height: 500px;
   border-radius: 50%;
   overflow: hidden;
-  background-color: #000;
   z-index: 1;
 }
 .rouletteSet01 .container:after {
@@ -344,9 +343,18 @@ body {
 }
 .rouletteSet01 .container .lineWrapper .line span {
   display: inline-block;
-  width: 2px;
+  width: 1px;
   height: 100%;
   background-color: #000;
+}
+.rouletteSet01 .container #myPieChart {
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  -webkit-transition-timing-function: cubic-bezier(0, -0.04, 0, 1) !important;
+          transition-timing-function: cubic-bezier(0, -0.04, 0, 1) !important;
 }
 .rouletteSet01 .container .wheel {
   width: 250px;
@@ -390,78 +398,12 @@ body {
   left: 0;
   margin: 0 auto;
   height: 250px;
-  -webkit-clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
-          clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+  clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
 }
 .rouletteSet01 .container .item .value {
   position: relative;
   z-index: 1;
   text-shadow: 1px 1px 0 #fff, -1px -1px 0 #fff, -1px 1px 0 #fff, 1px -1px 0 #fff, 0px 1px 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff, 1px 0 0 #fff;
-}
-.rouletteSet01 .container .item[data-index="1"] .bg {
-  background-color: #1d9df2;
-}
-.rouletteSet01 .container .item[data-index="2"] .bg,
-.rouletteSet01 .container .item[data-index="3"] .bg,
-.rouletteSet01 .container .item[data-index="4"] .bg,
-.rouletteSet01 .container .item[data-index="5"] .bg,
-.rouletteSet01 .container .item[data-index="6"] .bg,
-.rouletteSet01 .container .item[data-index="7"] .bg {
-  background-color: #61e59a;
-}
-.rouletteSet01 .container .item[data-index="8"] .bg,
-.rouletteSet01 .container .item[data-index="9"] .bg,
-.rouletteSet01 .container .item[data-index="10"] .bg,
-.rouletteSet01 .container .item[data-index="11"] .bg,
-.rouletteSet01 .container .item[data-index="12"] .bg,
-.rouletteSet01 .container .item[data-index="13"] .bg,
-.rouletteSet01 .container .item[data-index="14"] .bg {
-  background-color: #f23530;
-}
-.rouletteSet01 .container .item[data-index="15"] .bg,
-.rouletteSet01 .container .item[data-index="16"] .bg,
-.rouletteSet01 .container .item[data-index="17"] .bg,
-.rouletteSet01 .container .item[data-index="18"] .bg,
-.rouletteSet01 .container .item[data-index="19"] .bg,
-.rouletteSet01 .container .item[data-index="20"] .bg,
-.rouletteSet01 .container .item[data-index="21"] .bg,
-.rouletteSet01 .container .item[data-index="22"] .bg,
-.rouletteSet01 .container .item[data-index="23"] .bg {
-  background-color: #67d12a;
-}
-.rouletteSet01 .container .item[data-index="24"] .bg,
-.rouletteSet01 .container .item[data-index="25"] .bg,
-.rouletteSet01 .container .item[data-index="26"] .bg,
-.rouletteSet01 .container .item[data-index="27"] .bg,
-.rouletteSet01 .container .item[data-index="28"] .bg,
-.rouletteSet01 .container .item[data-index="29"] .bg,
-.rouletteSet01 .container .item[data-index="30"] .bg {
-  background-color: #ffd833;
-}
-.rouletteSet01 .container .item[data-index="31"] .bg,
-.rouletteSet01 .container .item[data-index="32"] .bg,
-.rouletteSet01 .container .item[data-index="33"] .bg,
-.rouletteSet01 .container .item[data-index="34"] .bg,
-.rouletteSet01 .container .item[data-index="35"] .bg {
-  background-color: #c0abef;
-}
-.rouletteSet01 .container .item[data-index="36"] .bg,
-.rouletteSet01 .container .item[data-index="37"] .bg,
-.rouletteSet01 .container .item[data-index="38"] .bg,
-.rouletteSet01 .container .item[data-index="39"] .bg {
-  background-color: #5ae0e0;
-}
-.rouletteSet01 .container .item[data-index="40"] .bg,
-.rouletteSet01 .container .item[data-index="41"] .bg,
-.rouletteSet01 .container .item[data-index="42"] .bg,
-.rouletteSet01 .container .item[data-index="43"] .bg,
-.rouletteSet01 .container .item[data-index="44"] .bg,
-.rouletteSet01 .container .item[data-index="45"] .bg,
-.rouletteSet01 .container .item[data-index="46"] .bg {
-  background-color: #f76c1e;
-}
-.rouletteSet01 .container .item[data-index="47"] .bg {
-  background-color: #ea65ba;
 }
 .rouletteSet01 .container .circle {
   display: inline-block;
