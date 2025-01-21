@@ -184,7 +184,6 @@ body {
   font-family: "Kiwi Maru", serif;
   font-weight: 400;
   font-style: normal;
-  min-width: 1480px;
 }
 .topArea {
   display: -webkit-box;
@@ -211,28 +210,43 @@ body {
   padding-bottom: 40px;
   margin: 40px auto 0;
   width: 100%;
-  background-color: #fff;
   border-top: 4px dotted #ccc;
 }
 .rouletteSet01 {
   position: relative;
-  width: 560px;
-  height: 740px;
+  width: 38%;
+  aspect-ratio: 28/37;
   background-image: url("../images/roulette_bg.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: content;
 }
 .rouletteSet01 .wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   position: absolute;
   top: 9%;
-  padding: 30px 0;
-  width: 560px;
+  padding: 5% 0;
+  width: 100%;
+  aspect-ratio: 1/1;
   background: -webkit-gradient(linear, left top, left bottom, from(#fcdd7e), to(#ee983e));
   background: linear-gradient(180deg, #fcdd7e 0%, #ee983e 100%);
   border-radius: 50%;
   -webkit-box-shadow: 0 -5px 0 #ed9a4d;
           box-shadow: 0 -5px 0 #ed9a4d;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 .rouletteSet01 .wrapper:before,
 .rouletteSet01 .wrapper:after {
@@ -246,23 +260,24 @@ body {
   border-radius: 50%;
 }
 .rouletteSet01 .wrapper:before {
-  width: calc(100% - 20px);
-  height: calc(100% - 20px);
+  width: 96%;
+  height: 96%;
   background: -webkit-gradient(linear, left bottom, left top, from(#fcdd7e), to(#ee983e));
   background: linear-gradient(0deg, #fcdd7e 0%, #ee983e 100%);
 }
 .rouletteSet01 .wrapper:after {
-  width: calc(100% - 40px);
-  height: calc(100% - 40px);
+  width: 92%;
+  height: 92%;
   background-color: #105a8c;
 }
 .rouletteSet01 .container {
   position: relative;
   margin: 0 auto;
-  width: 500px;
-  height: 500px;
+  width: 90%;
+  aspect-ratio: 1/1;
   border-radius: 50%;
   overflow: hidden;
+  background-color: #c02323;
   z-index: 1;
 }
 .rouletteSet01 .container:after {
@@ -279,10 +294,12 @@ body {
           box-sizing: border-box;
   z-index: 10;
   pointer-events: none;
-  -webkit-box-shadow: inset 0 5px 0 rgba(0,0,0,0.3);
-          box-shadow: inset 0 5px 0 rgba(0,0,0,0.3);
+  -webkit-box-shadow: inset 0 0.4vw 0 rgba(0,0,0,0.3);
+          box-shadow: inset 0 0.4vw 0 rgba(0,0,0,0.3);
 }
 .rouletteSet01 .container #roulette {
+  width: 50%;
+  aspect-ratio: 1/1;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -313,8 +330,8 @@ body {
   border-bottom: 50px solid #5e0b0b;
 }
 .rouletteSet01 .container .lineWrapper {
-  width: 250px;
-  height: 250px;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
   position: absolute;
   top: 0;
@@ -336,14 +353,14 @@ body {
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
-  height: 250px;
+  aspect-ratio: 1/1;
   position: absolute;
   -webkit-transform-origin: center;
           transform-origin: center;
 }
 .rouletteSet01 .container .lineWrapper .line span {
   display: inline-block;
-  width: 1px;
+  width: 0.05vw;
   height: 100%;
   background-color: #000;
 }
@@ -357,8 +374,8 @@ body {
           transition-timing-function: cubic-bezier(0, -0.04, 0, 1) !important;
 }
 .rouletteSet01 .container .wheel {
-  width: 250px;
-  height: 250px;
+  width: 100%;
+  aspect-ratio: 1/1;
   border-radius: 50%;
   position: relative;
   -webkit-box-sizing: border-box;
@@ -373,15 +390,14 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding-top: 15px;
   width: 100%;
-  height: 250px;
+  height: 100%;
   position: absolute;
   text-align: center;
-  -webkit-transform-origin: 50% 125px /* ルーレットの中心からの距離 */;
-          transform-origin: 50% 125px /* ルーレットの中心からの距離 */;
+  -webkit-transform-origin: center /* ルーレットの中心からの距離 */;
+          transform-origin: center /* ルーレットの中心からの距離 */;
   color: #333;
-  font-size: 14px;
+  font-size: 0.9vw;
   font-weight: bold;
   letter-spacing: 0.2em;
   -webkit-writing-mode: vertical-lr;
@@ -390,20 +406,10 @@ body {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
-.rouletteSet01 .container .item .bg {
-  display: inline-block;
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  margin: 0 auto;
-  height: 250px;
-  clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
-}
 .rouletteSet01 .container .item .value {
   position: relative;
   z-index: 1;
-  text-shadow: 1px 1px 0 #fff, -1px -1px 0 #fff, -1px 1px 0 #fff, 1px -1px 0 #fff, 0px 1px 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff, 1px 0 0 #fff;
+  text-shadow: 0.05vw 0.05vw 0 #fff, -0.05vw -0.05vw 0 #fff, -0.05vw 0.05vw 0 #fff, 0.05vw -0.05vw 0 #fff, 0px 0.05vw 0 #fff, 0 -0.05vw 0 #fff, -0.05vw 0 0 #fff, 0.05vw 0 0 #fff;
 }
 .rouletteSet01 .container .circle {
   display: inline-block;
@@ -412,15 +418,15 @@ body {
   left: 50%;
   -webkit-transform: translate3d(-50%, -50%, 0);
           transform: translate3d(-50%, -50%, 0);
-  width: 250px;
-  height: 250px;
+  width: 100%;
+  aspect-ratio: 1/1;
   background: -webkit-gradient(linear, left top, left bottom, from(#fcdd7e), to(#ee983e));
   background: linear-gradient(180deg, #fcdd7e 0%, #ee983e 100%);
   border-radius: 50%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  -webkit-box-shadow: 0 5px 0 rgba(0,0,0,0.3);
-          box-shadow: 0 5px 0 rgba(0,0,0,0.3);
+  -webkit-box-shadow: 0 0.4vw 0 rgba(0,0,0,0.3);
+          box-shadow: 0 0.4vw 0 rgba(0,0,0,0.3);
   z-index: 10;
 }
 .rouletteSet01 .container .circle .inner {
@@ -448,35 +454,11 @@ body {
   border-radius: 50%;
 }
 .rouletteSet01 .container .circle .symbolWrapper {
-  margin-top: 20px;
-  width: 100px;
+  margin-top: 10%;
+  width: 47%;
 }
 .rouletteSet01 .container .circle .symbolWrapper img {
   width: 100%;
-}
-.rouletteSet01 .container .circle .result {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: 150px;
-  height: 50px;
-  background-color: #fff;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-.rouletteSet01 .container .circle .result #destination {
-  display: inline-block;
-  color: #198caa;
-  font-size: 30px;
-  font-weight: bold;
-  font-family: "Yusei Magic", sans-serif;
-  line-height: 1;
 }
 .btnWrapper {
   display: -webkit-box;
@@ -488,7 +470,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  gap: 10px;
+  width: 70%;
 }
 .rouletteBtn {
   display: -webkit-box;
@@ -501,19 +483,20 @@ body {
       -ms-flex-align: center;
           align-items: center;
   margin-bottom: 0;
-  margin-top: 3px;
-  padding: 2px;
+  margin-top: 0.2vw;
+  padding: 0.2vw;
+  width: 100%;
   color: #fff;
   background-color: #198caa;
-  border: 2px solid #198caa;
+  border: 0.1vw solid #198caa;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   border-radius: 100px;
-  font-size: 20px;
+  font-size: 1.2vw;
   font-family: "Righteous", sans-serif;
   letter-spacing: 0.1em;
-  -webkit-box-shadow: 0 -3px 0 #326464;
-          box-shadow: 0 -3px 0 #326464;
+  -webkit-box-shadow: 0 -0.2vw 0 #326464;
+          box-shadow: 0 -0.2vw 0 #326464;
   cursor: pointer;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
@@ -521,25 +504,25 @@ body {
 .rouletteBtn.is-spin {
   background-color: #930909;
   border-color: #930909;
-  -webkit-box-shadow: 0 -3px 0 #5e0b0b;
-          box-shadow: 0 -3px 0 #5e0b0b;
+  -webkit-box-shadow: 0 -0.2vw 0 #5e0b0b;
+          box-shadow: 0 -0.2vw 0 #5e0b0b;
 }
 .rouletteBtn span {
   display: inline-block;
-  padding: 5px 40px;
-  min-width: 150px;
+  padding: 0.5vw;
+  width: calc(100% - 0.4vw);
   text-align: center;
   line-height: 1;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  border: 1px solid #fff;
+  border: 0.1vw solid #fff;
   border-radius: 100px;
   pointer-events: none;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
 .rouletteBtn.is-disabled {
-  margin-bottom: 3px;
+  margin-bottom: 0.2vw;
   margin-top: 0px;
   color: #333;
   background-color: #777 !important;
@@ -552,8 +535,8 @@ body {
   border-color: #333;
 }
 .checkBoxSet01 {
-  padding-right: 40px;
-  border-right: 4px dotted #ccc;
+  padding-right: 3vw;
+  border-right: 0.3vw dotted #ccc;
 }
 .checkBoxSet01 .container {
   display: -webkit-box;
@@ -564,16 +547,16 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  gap: 20px;
+  gap: 1.5vw;
 }
 .checkBoxSet01 .container .box .area {
-  margin-bottom: 10px;
-  font-size: 18px;
+  margin-bottom: 1vw;
+  font-size: 1.3vw;
   font-weight: bold;
 }
 .checkBoxSet01 .container .box .area:before {
   content: '-';
-  margin-right: 5px;
+  margin-right: 0.3vw;
 }
 .checkBoxSet01 .container .box .list {
   display: -webkit-box;
@@ -583,11 +566,11 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  gap: 3px;
-  padding-left: 5px;
+  gap: 0.2vw;
+  padding-left: 0.3vw;
 }
 .checkBoxSet01 .container .box .list label {
-  font-size: 14px;
+  font-size: 1.1vw;
   font-weight: bold;
 }
 .checkBoxSet01 .container .box .list label input[type="checkbox"][data-index="1"] {
@@ -753,6 +736,9 @@ body {
   backface-visibility: hidden;
   -webkit-transition: all 1s;
   transition: all 1s;
+}
+.mapSet01 .container .mapArea.is-singleColor li.svg.active.target svg {
+  fill: #c02323 !important;
 }
 .mapSet01 .container .mapArea:before {
   content: '';

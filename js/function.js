@@ -49,17 +49,17 @@ $(document).ready(function() {
         // 配列をループして、ルーレットのHTMLにオブジェクトを生成し表示
         $.each(checkedValues, function(i, value) {
             $('<div class="item" data-index=' + checkedIds[i] +'><span class="bg"></span><span class="value">' + value + '</span></div>').css({
-                'transform': 'rotate(' + (360 / valuesNum) * i + 'deg) translate(0, -125px)'
+                'transform': 'rotate(' + (360 / valuesNum) * i + 'deg) translate(0, -45%)'
             }).appendTo(wheel);
             $('<div class="line"><span></span></div>').css({
-                'transform': 'rotate(' + (360 / valuesNum) * i + 'deg) translate(0, -125px)'
+                'transform': 'rotate(' + (360 / valuesNum) * i + 'deg) translate(0, -50%)'
         }).appendTo(lineWrapper);
         });
 
         // ルーレットの項目同士の区切り線を表示
         lineWrapper.css('transform', 'rotate(' + ((360 / valuesNum) - ((360 / valuesNum)/2))  + 'deg)');
 
-        var radius = 250;
+        var radius = wheel.innerWidth()/2;
         var length = 2 * radius * Math.PI;
         var itemWidth = (length / valuesNum) ;
 
@@ -271,7 +271,7 @@ $(document).ready(function() {
                         '#EA65BA'
                     ],
                     borderColor: '#000000',
-                    borderWidth: 0.5 // 境界線の太さ
+                    borderWidth: 0 // 境界線の太さ
                 }]
             },
             options: {
@@ -332,6 +332,17 @@ $(document).ready(function() {
         }
     });
 
+    // // ルーレットの色変更
+    // $('input[name="rouletteColor"]').on('input', function() {
+    //     if($(this).prop("checked")) {
+    //         $('#myPieChart').css('opacity', '0');
+    //         $('.container .mapArea').addClass('is-singleColor');
+    //     } else {
+    //         $('#myPieChart').css('opacity', '1');
+    //         $('.container .mapArea').removeClass('is-singleColor');
+    //     }
+    // });
+
     // 都道府県ボックスのチェックボックスを押した際の処理
     $('input[name="result"]').on('input', function() {
         if($(this).prop("checked")) {
@@ -341,6 +352,15 @@ $(document).ready(function() {
             $('.resultArea').removeClass('is-show');
             $('.resultArea').addClass('is-hide');
         }
+    });
+
+
+    // 背景色を変更する
+    $('#color-picker').on('input', function() {
+        // 選択された色を取得
+        const selectedColor = $(this).val();
+        // 背景色を変更
+        $('body').css('background-color', selectedColor);
     });
 
 });
